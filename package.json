@@ -5,7 +5,7 @@
   "main": "core.js",
   "scripts": {
       "test": "jest",
-      "build": "babel src -d lib && node lib/core.js"
+      "build": "babel src -d lib && node lib/core.js --silent"
   },
   "keywords": [],
   "author": "Joshua Stupplebeen (cthulhu-bot)",
