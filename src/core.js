@@ -1,3 +1,8 @@
-const foo = () => { console.log('you haven\'t done anything yet'); }
+#! /usr/bin/env node
+const convert = (lockFile) => {
+    console.log(lockFile)
+}
 
-foo();
+module.exports = {
+    convert,
+}
