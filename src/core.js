@@ -1,8 +1,9 @@
-import program from 'commander';
-import prompt from 'prompt';
-const readline = require('readline');
-import fs from 'fs';
-import path from 'path';
+import program from 'commander'
+import prompt from 'prompt'
+const readline = require('readline')
+import fs from 'fs'
+import path from 'path'
+import YarnLock from './yarnlock'
 
 program
   .option('-f, --fileName', 'Specify yarn.lock fileName')
@@ -29,9 +30,20 @@ const processYarnLock = () => {
     process.argv.forEach((val, index) => {
       console.log(`${index}: ${val}`);
     });
-    fs.readdir(process.cwd(), (err, files) => {
+    const rootProjectPath = process.cwd();
+    fs.readdir(rootProjectPath, (err, files) => {
       if (files.indexOf('yarn.lock') > -1) {
         console.log('yarn.lock found!');
+        console.log('path to yarn.lock ', rootProjectPath);
+        console.log('yarn.lock contents: ');
+        const yarnLock = fs.readFile(
+          `${rootProjectPath}//yarn.lock`,
+          'utf8',
+          (err, data) => {
+              const yarnLock = new YarnLock(data)
+              console.log(yarnLock.rawText)
+          }
+        );
       } else {
         console.log('no fucking yarn.lock!');
       }
