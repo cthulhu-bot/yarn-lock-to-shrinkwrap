@@ -33,15 +33,12 @@ const processYarnLock = () => {
     const rootProjectPath = process.cwd();
     fs.readdir(rootProjectPath, (err, files) => {
       if (files.indexOf('yarn.lock') > -1) {
-        console.log('yarn.lock found!');
-        console.log('path to yarn.lock ', rootProjectPath);
-        console.log('yarn.lock contents: ');
         const yarnLock = fs.readFile(
           `${rootProjectPath}//yarn.lock`,
           'utf8',
           (err, data) => {
               const yarnLock = new YarnLock(data)
-              console.log(yarnLock.rawText)
+              console.log(yarnLock.packages())
           }
         );
       } else {
