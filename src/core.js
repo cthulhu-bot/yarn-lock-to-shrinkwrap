@@ -38,7 +38,8 @@ const processYarnLock = () => {
           'utf8',
           (err, data) => {
               const yarnLock = new YarnLock(data)
-              console.log(yarnLock.packages())
+              const foo = yarnLock.packages()
+//              console.log(yarnLock.packages())
           }
         );
       } else {
@@ -46,6 +47,6 @@ const processYarnLock = () => {
       }
     });
   }
-};
+}
 
 processYarnLock();
