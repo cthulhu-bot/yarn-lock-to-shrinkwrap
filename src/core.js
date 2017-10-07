@@ -1,9 +1,9 @@
-import program from 'commander'
-import prompt from 'prompt'
-const readline = require('readline')
-import fs from 'fs'
-import path from 'path'
-import YarnLock from './yarnlock'
+import program from 'commander';
+import prompt from 'prompt';
+const readline = require('readline');
+import fs from 'fs';
+import path from 'path';
+import YarnLock from './yarnlock';
 
 program
   .option('-f, --fileName', 'Specify yarn.lock fileName')
@@ -37,9 +37,10 @@ const processYarnLock = () => {
           `${rootProjectPath}//yarn.lock`,
           'utf8',
           (err, data) => {
-              const yarnLock = new YarnLock(data)
-              console.log(yarnLock.packages())
-          }
+            const yarnLock = new YarnLock(data);
+            const foo = yarnLock.packages()
+            // console.log(yarnLock.packages())
+          },
         );
       } else {
         console.log('no fucking yarn.lock!');
