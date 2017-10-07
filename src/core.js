@@ -37,16 +37,16 @@ const processYarnLock = () => {
           `${rootProjectPath}//yarn.lock`,
           'utf8',
           (err, data) => {
-            const yarnLock = new YarnLock(data);
-            const foo = yarnLock.packages()
-            // console.log(yarnLock.packages())
-          },
+              const yarnLock = new YarnLock(data)
+              const foo = yarnLock.packages()
+//              console.log(yarnLock.packages())
+          }
         );
       } else {
         console.log('no fucking yarn.lock!');
       }
     });
   }
-};
+}
 
 processYarnLock();
